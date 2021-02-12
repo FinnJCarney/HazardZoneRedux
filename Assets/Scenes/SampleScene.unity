@@ -374,8 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 618365002}
-  resetScene: 0
+  resetScene: 1
   waitTimer: 120
+  SceneName: 
 --- !u!65 &1428260977
 BoxCollider:
   m_ObjectHideFlags: 0

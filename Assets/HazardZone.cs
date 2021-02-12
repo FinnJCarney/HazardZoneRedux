@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HazardZone : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class HazardZone : MonoBehaviour
     GameObject player;
     bool beginTeleport;
     int timer;
-   
+
 
     public void OnTriggerEnter(Collider other)
     {
@@ -33,14 +34,22 @@ public class HazardZone : MonoBehaviour
             {
                 beginTeleport = false;
                 timer = 0;
-                TeleportPlayer();
+                ResetPlayer();
             }
         }
     }
 
-    public void TeleportPlayer()
+    public void ResetPlayer()
     {
-        player.transform.position = respawnPoint.position;
-        player.GetComponent<CharacterController>().enabled = true;
+        if (!resetScene)
+        {
+            player.transform.position = respawnPoint.position;
+            player.GetComponent<CharacterController>().enabled = true;
+        }
+
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
